@@ -2,9 +2,7 @@
 
 VIM-PyDjango created by Programmer for Programmer who work on Python & Django everyday.
 
-It's coming with several features : Autocomplete, Pep8 checker, File Manager, Function sidebar,
-
-Detect unused module/variable, Auto-Commenting, Python/Django/Custom snippets and many else!
+It's coming with several features : Autocomplete, Pep8 checker, File Manager, Function bar, detect unused module/variable, Auto-Commenting, Python/Django/Custom snippets and many else!
 
 
 # How it works ?
@@ -33,7 +31,7 @@ There are several standards used in this VIM
 
 # Development Rules
 
-VIM-PyDjango use 80 lines terminals ( Good for universal development ). 
+VIM-PyDjango use 80 lines terminals ( Good for development )
 
 It using tab & space size as Python standard.
 
@@ -41,5 +39,5 @@ It using tab & space size as Python standard.
 
 VIM-PyDjango using latest and updated VIM plugins and tools. 
 
-Proved for increasing your coding development. Guarantee!
+Cut a lot time for develop python & django applications after use it!
 
