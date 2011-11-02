@@ -15,26 +15,32 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'vim-scripts/buftabs'
-
-"Color scheme
+ 
+" Color scheme
 Bundle 'cschlueter/vim-mustang'
 Bundle 'godlygeek/csapprox'
 
+" Utilities
+Bundle 'mhz/vim-matchit.git'
+
 " Syntax Commenter
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/tComment'
 
 " HTML Development 
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Universal Syntax Checker + Completion
-Bundle 'vim-scripts/UltiSnips'
+Bundle 'UltiSnips'
 Bundle 'scrooloose/syntastic'
+Bundle "Shougo/neocomplcache"
 
 " Python Syntax Checker
 Bundle 'kevinw/pyflakes-vim'
+Bundle 'vim-scripts/pep8'
+Bundle 'vim-scripts/Pydiction'
 
 filetype plugin indent on     " required! 
+
 
 " INSTALLED PACKAGES
 " =========================================
@@ -50,6 +56,7 @@ filetype plugin indent on     " required!
 " UltiSnips
 " MRU
 "
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -77,7 +84,6 @@ map <leader>e :e! ~/.vimrc<cr>
 
 " When vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -200,6 +206,10 @@ set pastetoggle=<F3>          " Press F3 for toggle paste mode
 set cursorline
 set colorcolumn=80 " Mark 80th column with a red line
 
+" Taken From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+match OverLength /\%81v.\+/
+
 " Paste using ,v in normal mode
 nnoremap <leader>v "+gP
 
@@ -267,6 +277,35 @@ nnoremap <leader>c <CR>:cclose<CR>
 " Set autocomplete form 
 set completeopt=menuone,longest,preview
 
+"--- python formatting help ---
+autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown,ctp setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php,ctp setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType vim set omnifunc=syntaxcomplete#Complete
+
+" markdown
+au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0
+
+" http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor"
+
+" HTML (tab width 2 chr, no wrapping)
+autocmd FileType html set sw=2
+autocmd FileType html set ts=2
+autocmd FileType html set sts=2
+autocmd FileType html set textwidth=0
+
+" XHTML (tab width 2 chr, no wrapping)
+autocmd FileType xhtml set sw=2
+autocmd FileType xhtml set ts=2
+autocmd FileType xhtml set sts=2
+autocmd FileType xhtml set textwidth=0
+
 " CSS (tab width 2 chr, wrap at 79th char)
 autocmd FileType css set sw=2
 autocmd FileType css set ts=2
@@ -303,9 +342,88 @@ aug QFClose
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
 
+" http://stackoverflow.com/questions/1687252/with-vim-use-both-snipmate-and-pydiction-together-share-the-tab-key "
+" Change share keys between pydiction and snipmate
+"
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
+if has("gui_running")
+    " Vimdiff colorscheme
+    highlight DiffAdd cterm=none ctermfg=bg ctermbg=Green gui=none guifg=bg guibg=Green
+    highlight DiffDelete cterm=none ctermfg=bg ctermbg=Red gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=none ctermfg=bg ctermbg=Yellow gui=none guifg=bg guibg=Yellow
+    highlight DiffText cterm=none ctermfg=bg ctermbg=Magenta gui=none guifg=bg guibg=Magenta
+endif
+
 " CUSTOM CONFIGURATION FOR INSTALLED PLUGIN
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pep8 using F5
+" You can change with this :
+let g:pep8_map='F5'
+
+" Pydiction
+let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
+
+"""" PYTHON STYLE """"
+let python_highlight_all=1 " Enable all plugin's highlighting.
+let python_slow_sync=1 " For fast machines.
+let python_print_as_function=1 " Color 'print' function.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips - ultimate snippets
+"
+set runtimepath+=~/.vim/bundle/UltiSnips
+let g:UltiSnipsSnippetsDir='~/.vim/bundle/UltiSnips/UltiSnips/'
+
+set runtimepath+=~/.vim/ultisnips_rep
+
+" UltiSnips plugin
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
+map <leader>f :FufFileWithCurrentBufferDir<CR>
+map <F2> :FufFileWithFullCwd<CR>
+map <leader>b :FufBuffer<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MRU shorcuts
+map <leader><space> :MRU<CR> 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pyflakes configuration
+if has("gui_running")
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure neocomplcache autocomplete 
+" http://www.vim.org/scripts/script.php?script_id=2620
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_min_syntax_length = 3 
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+highlight Pmenu gui=bold
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+
+
+if has("gui_running")
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open Window Explorer NerdTree & Tagbar using (left-right sidebar) using <F8>
@@ -382,31 +500,4 @@ function! s:CloseIfOnlyNerdTreeLeft()
     endif
   endif
 endfunction
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
-map <leader>f :FufFileWithCurrentBufferDir<CR>
-map <F2> :FufFileWithFullCwd<CR>
-map <leader>b :FufBuffer<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MRU shorcuts by pressing <leader> + space
-map <leader><space> :MRU<CR> 
-
-" Syntastic configuration
-" Remember to delete syntax_checker python because we have pyflakes handle python
-" rm -rf ~/.vim/bundle/syntastic/syntax_checkers/python.vim
-"
-let g:syntastic_auto_loc_list=1 "Auto open errors window upon detection
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-let g:syntastic_enable_balloons=1 
-let g:syntastic_quiet_warnings=0
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
