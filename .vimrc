@@ -38,6 +38,7 @@ Bundle "Shougo/neocomplcache"
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'vim-scripts/Pydiction'
+Bundle "vim-scripts/indentpython.vim"
 
 filetype plugin indent on     " required! 
 
@@ -49,15 +50,17 @@ filetype plugin indent on     " required!
 " FuzzyFinder : http://www.vim.org/scripts/script.php?script_id=1984
 " L9 : http://www.vim.org/scripts/script.php?script_id=3252
 " Pyflakes : https://github.com/kevinw/pyflakes-vim
-" Pep8
+" Pep8 : https://github.com/vim-scripts/pep8
 " NerdTree : https://github.com/scrooloose/nerdtree
 " NerdCommenter : https://github.com/scrooloose/nerdcommenter
 " Tagbar : https://github.com/majutsushi/tagbar
 " Sparkup : http://jetpackweb.com/blog/2010/03/04/write-html-faster-with-sparkup-vim-and-textmate/
-" UltiSnips
-" MRU
-" Tagbar
-" NeoComplcache
+" UltiSnips : http://www.vim.org/scripts/script.php?script_id=2715, 
+"             http://fueledbylemons.com/blog/2011/07/27/why-ultisnips/
+" MRU    : https://github.com/vim-scripts/mru.vim
+" Tagbar : https://github.com/majutsushi/tagbar
+" NeoComplcache : https://github.com/Shougo/neocomplcache
+" IndentPython : https://github.com/vim-scripts/indentpython.vim
 
 " Key Shorcuts by Default
 " Leader                = ,
@@ -489,7 +492,8 @@ nnoremap <leader>l :TagbarToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""
 " NERDTree : https://github.com/scrooloose/nerdtree.git
 " MODIFYING NERDTree MY CUSTOM
-" how to using NERDTree : http://ykyuen.wordpress.com/2011/04/04/nerdtree-the-file-explorer-in-vivim/
+" how to using NERDTree : 
+" http://ykyuen.wordpress.com/2011/04/04/nerdtree-the-file-explorer-in-vivim/
 """""""""""""""""""""""""""""""""""""""""""
 
 " Enable this for make NERDTree load every opening files
