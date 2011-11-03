@@ -1,19 +1,24 @@
 # VIM for Python and Django Development
 
-VIM-PyDjango created by Programmer for Programmer who work on Python & Django everyday.
+VIM-PyDjango created by Programmer for Programmer who work on Python & Django 
+everyday.
 
-It's coming with several features : Autocomplete, Pep8 checker, File Manager, Function bar, detect unused module/variable, Auto-Commenting, Python/Django/Custom snippets and many else!
+It's coming with several features : Autocomplete, Pep8 checker, File Manager, 
+Function bar, detect unused module/variable, Auto-Commenting, 
+Python/Django/Custom snippets and many else!
 
 
 # How it works ?
 
-It will detect automatically your code while typing. All code will show with related options.
+It will detect automatically your code while typing. All code will show with 
+related options.
 
 Code mistake, unused variable, un-standard Python will checked automatically. 
 
 Helpful notification will show on bottom so it not disturb your view.
 
-Not only for python files, it also pay attention for  html, js and all django related files.
+Not only for python files, it also pay attention for  html, js and all django
+related files.
 
 
 # Python Programming Standards
@@ -55,11 +60,8 @@ File Explorer         = , + t
 
 Tagbar                = , + l
 
+
 # Plugin Installed
-
-
-INSTALLED PACKAGES
-=========================================
 
 Color scheme Mustang : http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484
 
