@@ -20,12 +20,6 @@ Helpful notification will show on bottom so it not disturb your view.
 Not only for python files, it also pay attention for  html, js and all django
 related files.
 
-# Installation
-
-It using Vundle for manage all plugin. 
-
-Follow https://github.com/gmarik/vundle for Installation Guide.
-
 
 # Python Programming Standards
 
