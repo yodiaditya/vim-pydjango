@@ -55,6 +55,44 @@ File Explorer         = , + t
 
 Tagbar                = , + l
 
+# Plugin Installed
+
+
+INSTALLED PACKAGES
+=========================================
+
+Color scheme Mustang : http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484
+
+Syntastic :https://github.com/scrooloose/syntastic
+
+FuzzyFinder : http://www.vim.org/scripts/script.php?script_id=1984
+
+L9 : http://www.vim.org/scripts/script.php?script_id=3252
+
+Pyflakes : https://github.com/kevinw/pyflakes-vim
+
+Pep8 : https://github.com/vim-scripts/pep8
+
+NerdTree : https://github.com/scrooloose/nerdtree
+
+NerdCommenter : https://github.com/scrooloose/nerdcommenter
+
+Tagbar : https://github.com/majutsushi/tagbar
+
+Sparkup : http://jetpackweb.com/blog/2010/03/04/write-html-faster-with-sparkup-vim-and-textmate/
+
+UltiSnips : http://www.vim.org/scripts/script.php?script_id=2715
+
+MRU    : https://github.com/vim-scripts/mru.vim
+
+Tagbar : https://github.com/majutsushi/tagbar
+
+NeoComplcache : https://github.com/Shougo/neocomplcache
+
+IndentPython : https://github.com/vim-scripts/indentpython.vim
+
+Fugitive : https://github.com/tpope/vim-fugitive
+
 
 # Why you should use this ?
 

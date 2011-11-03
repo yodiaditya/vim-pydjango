@@ -21,7 +21,8 @@ Bundle 'cschlueter/vim-mustang'
 Bundle 'godlygeek/csapprox'
 
 " Utilities
-Bundle 'mhz/vim-matchit.git'
+Bundle 'mhz/vim-matchit'
+Bundle 'Raimondi/delimitMate'
 
 " Syntax Commenter
 Bundle 'vim-scripts/tComment'
@@ -39,6 +40,9 @@ Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'vim-scripts/Pydiction'
 Bundle "vim-scripts/indentpython.vim"
+
+" Versioning System
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on     " required! 
 
@@ -61,6 +65,7 @@ filetype plugin indent on     " required!
 " Tagbar : https://github.com/majutsushi/tagbar
 " NeoComplcache : https://github.com/Shougo/neocomplcache
 " IndentPython : https://github.com/vim-scripts/indentpython.vim
+" Fugitive : https://github.com/tpope/vim-fugitive
 
 " Key Shorcuts by Default
 " Leader                = ,
@@ -281,9 +286,6 @@ set whichwrap=h,l,~,[,]
 noremap <Space> <PageDown>
 noremap <BS> <PageUp>
 
-" allow <BkSpc> to delete line breaks, start of insertion, and indents
-set backspace=eol,start,indent
-
 " Execute Python file being edited with <Shift> + e:
 nnoremap E w:<CR>:!python % <CR>
 
@@ -370,6 +372,16 @@ if has("gui_running")
     highlight DiffChange cterm=none ctermfg=bg ctermbg=Yellow gui=none guifg=bg guibg=Yellow
     highlight DiffText cterm=none ctermfg=bg ctermbg=Magenta gui=none guifg=bg guibg=Magenta
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto close preview menu autocomplete after choose
+" http://stackoverflow.com/questions/3105307/how-do-you-automatically-remove-the-preview-window-after-autocompletion-in-vim
+"
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " CUSTOM CONFIGURATION FOR INSTALLED PLUGIN
 "
