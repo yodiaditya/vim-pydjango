@@ -35,6 +35,27 @@ VIM-PyDjango use 80 lines terminals ( Good for development )
 
 It using tab & space size as Python standard.
 
+# Shorcut keys
+
+Leader                = ,
+
+MRU                   = , + space
+
+Pep8                  = F5
+
+FileManager + Tagbar  = F8
+
+FileManager           = , + t
+
+FuzzFinder Files      = F2 
+
+FuzzFinder Buffer     = , + b
+
+File Explorer         = , + t
+
+Tagbar                = , + l
+
+
 # Why you should use this ?
 
 VIM-PyDjango using latest and updated VIM plugins and tools. 

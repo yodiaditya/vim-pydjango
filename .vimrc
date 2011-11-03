@@ -49,14 +49,27 @@ filetype plugin indent on     " required!
 " FuzzyFinder : http://www.vim.org/scripts/script.php?script_id=1984
 " L9 : http://www.vim.org/scripts/script.php?script_id=3252
 " Pyflakes : https://github.com/kevinw/pyflakes-vim
+" Pep8
 " NerdTree : https://github.com/scrooloose/nerdtree
 " NerdCommenter : https://github.com/scrooloose/nerdcommenter
 " Tagbar : https://github.com/majutsushi/tagbar
 " Sparkup : http://jetpackweb.com/blog/2010/03/04/write-html-faster-with-sparkup-vim-and-textmate/
 " UltiSnips
 " MRU
-"
+" Tagbar
+" NeoComplcache
 
+" Key Shorcuts by Default
+" Leader                = ,
+" MRU                   = , + space
+" Pep8                  = F5
+" FileManager + Tagbar  = F8
+" FileManager           = , + t
+" FuzzFinder Files      = F2 
+" FuzzFinder Buffer     = , + b
+" File Explorer         = , + t
+" Tagbar                = , + l
+" 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -469,6 +482,8 @@ nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 " TagBar Configuration
 let g:tagbar_usearrows=1
 let g:tagbar_width=30
+
+" Use leader + l to open Tagbar in Right side
 nnoremap <leader>l :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""
