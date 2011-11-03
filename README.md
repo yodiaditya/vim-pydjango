@@ -20,7 +20,9 @@ Helpful notification will show on bottom so it not disturb your view.
 Not only for python files, it also pay attention for  html, js and all django
 related files.
 
-<iframe width="425" height="349" src="http://www.youtube.com/embed/a-KfmxoxdfI?hl=en&fs=1" frameborder="0" allowfullscreen></iframe>
+Watch Video example usage on :
+
+http://www.youtube.com/watch?v=a-KfmxoxdfI
 
 # Installation
 
