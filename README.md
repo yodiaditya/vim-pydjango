@@ -20,6 +20,8 @@ Helpful notification will show on bottom so it not disturb your view.
 Not only for python files, it also pay attention for  html, js and all django
 related files.
 
+<iframe width="425" height="349" src="http://www.youtube.com/embed/a-KfmxoxdfI?hl=en&fs=1" frameborder="0" allowfullscreen></iframe>
+
 # Installation
 
 It using Vundle for manage all plugin. 
