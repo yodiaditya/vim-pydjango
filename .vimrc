@@ -331,10 +331,8 @@ autocmd FileType css set sts=2
 
 " Folding
 " auto save folding : http://princ3.wordpress.com/2007/01/26/automaticaly-save-foldings-in-vim/
-au BufWinLeave * silent! mkview
-au BufWinEnter * silent! loadview
-autocmd BufWinLeave .* mkview
-autocmd BufWinEnter .* silent loadview 
+" au BufWinLeave * silent! mkview
+" au BufWinEnter * silent! loadview
 
 autocmd Syntax c,cpp,vim,xml,html,xhtml,js,php,py,python setlocal foldmethod=manual
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
