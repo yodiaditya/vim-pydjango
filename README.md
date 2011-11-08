@@ -3,8 +3,9 @@
 VIM-PyDjango created by Programmer for Programmer who work on Python & Django 
 everyday.
 
-It's coming with several features : Autocomplete, Pep8 checker, File Manager, 
-Function bar, detect unused module/variable, Auto-Commenting, 
+It's coming with several features : 
+
+Autocomplete, Pep8 checker, File Manager, Function bar, detect unused module/variable, Auto-Commenting, 
 Python/Django/Custom snippets and many else!
 
 
@@ -30,6 +31,12 @@ It using Vundle for manage all plugin.
 
 Follow https://github.com/gmarik/vundle for Installation Guide.
 
+Don't forget to install dependency packages (I'm using Ubuntu 11.10):
+
+    sudo apt-get install python-setuptools python-pip
+    sudo pip install git+git://github.com/kevinw/pyflakes.git
+    sudo pip install pylint
+    sudo pip install pep8
 
 # Python Programming Standards
 
