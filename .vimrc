@@ -41,7 +41,7 @@ Bundle "Shougo/neocomplcache"
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'vim-scripts/Pydiction'
-Bundle "vim-scripts/indentpython.vim"
+"Bundle "vim-scripts/indentpython.vim"
 
 " Versioning System
 Bundle 'tpope/vim-fugitive'
@@ -528,6 +528,7 @@ autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Use leader + . for opening File Explorer
 map <leader>. :NERDTreeTabsToggle<CR>
+let NERDTreeShowBookmarks=1
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
