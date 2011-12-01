@@ -506,6 +506,7 @@ nmap <F8> :call ToggleNERDTreeAndTagbar()<CR>
 " TagBar Configuration
 let g:tagbar_usearrows=1
 let g:tagbar_width=30
+let g:tagbar_singleclick=1
 
 " Use leader + l to open Tagbar in Right side
 nnoremap <leader>l :TagbarToggle<CR>
@@ -528,7 +529,9 @@ autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Use leader + . for opening File Explorer
 map <leader>t :NERDTreeTabsToggle<CR>
-let NERDTreeShowBookmarks=1
+let g:NERDTreeShowBookmarks=1
+let g:NERDTreeMouseMode=3
+let g:NERDTreeWinSize=30
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
