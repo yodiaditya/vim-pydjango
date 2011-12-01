@@ -15,7 +15,7 @@ Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
+"Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'sjl/gundo.vim'
 
 " Color scheme
@@ -483,9 +483,9 @@ function! ToggleNERDTreeAndTagbar()
     elseif nerdtree_open
         TagbarOpen
     elseif tagbar_open
-        NERDTreeTabsToggle
+        NERDTreeToggle
     else
-        NERDTreeTabsToggle
+        NERDTreeToggle
         TagbarOpen
     endif
 
@@ -528,7 +528,7 @@ nnoremap <leader>l :TagbarToggle<CR>
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Use leader + . for opening File Explorer
-map <leader>t :NERDTreeTabsToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeMouseMode=3
 let g:NERDTreeWinSize=30
@@ -554,3 +554,79 @@ nmap <F2> :Dbg .<CR>
 nmap <F3> :Dbg over<CR>
 nmap <F4> :Dbg break<CR>
 nmap <F5> :Dbg quit<CR>
+
+" Taken from http://dotfiles.org/~joaoTrindade/.vimrc
+"
+" Minibuffer{{{
+""""""""""""""""""""""""""""""
+"Show the miniBufExplorer from the start
+let g:miniBufExplorerMoreThanOne = 0
+
+"Not using because I don't use the vertival window
+"Use a vertical windows
+"let g:miniBufExplVSplit = 5
+
+"Put the miniBufExplorer windows at the right
+"let g:miniBufExplSplitBelow=1
+
+"Maximum size of the mini buffer explorer window
+"let g:miniBufExplMaxSize = 15
+
+"Still haven't discovered what it does
+"let g:miniBufExplMapWindowNavArrows = 1
+"let g:miniBufExplMapCTabSwitchBufs = 1
+"let g:miniBufExplUseSingleClick = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"
+" make tabs show complete (no broken on two lines)
+let g:miniBufExplTabWrap = 1
+
+" If you use other explorers like TagList you can (As of 6.2.8) set it at 1:
+let g:miniBufExplModSelTarget = 1
+
+" If you would like to single click on tabs rather than double clicking on them to goto the selected buffer.
+let g:miniBufExplUseSingleClick = 1
+
+"for buffers that have NOT CHANGED and are NOT VISIBLE.
+highlight MBENormal guifg=LightBlue
+
+" for buffers that HAVE CHANGED and are NOT VISIBLE
+highlight MBEChanged guifg=Red
+
+" buffers that have NOT CHANGED and are VISIBLE
+highlight MBEVisibleNormal term=bold cterm=bold gui=bold guifg=Green
+
+" buffers that have CHANGED and are VISIBLE
+highlight MBEVisibleChanged term=bold cterm=bold gui=bold guifg=Green
+
+let g:bufExplorerSortBy = "name"
+
+autocmd BufRead,BufNew :call UMiniBufExplorer
+
+"""""""""""""""""""""""""""""""""""
+" Stolen from http://dev.gentoo.org/~bass/configs/vimrc.html
+"
+" Adapt the status line accourding to the window
+"""""""""""""""""""""""""""""""""""
+if has("autocmd")
+    au FileType qf
+                \ if &buftype == "quickfix" |
+                \     setlocal statusline=%2*%-3.3n%0* |
+                \     setlocal statusline+=\ \[Compiler\ Messages\] |
+                \     setlocal statusline+=%=%2*\ %<%P |
+                \ endif
+
+    fun! FixMiniBufExplorerTitle()
+        if "-MiniBufExplorer-" == bufname("%")
+            setlocal statusline=%2*%-3.3n%0*
+            setlocal statusline+=\[Buffers\]
+            setlocal statusline+=%=%2*\ %<%P
+        endif
+    endfun
+
+    au BufWinEnter *
+                \ let oldwinnr=winnr() |
+                \ windo call FixMiniBufExplorerTitle() |
+                \ exec oldwinnr . " wincmd w"
+endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
