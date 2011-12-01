@@ -72,7 +72,7 @@ filetype plugin indent on     " required!
 " Key Shorcuts by Default
 " Leader                = ,
 " MRU                   = , + space
-" Pep8                  = F5
+" Pep8                  = F6
 " FileManager + Tagbar  = F8
 " FileManager           = , + t
 " FuzzFinder Files      = , + m
@@ -397,7 +397,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pep8 using F5
 " You can change with this :
-let g:pep8_map='F5'
+let g:pep8_map='F6'
 
 " Pydiction
 let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'

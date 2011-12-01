@@ -70,7 +70,7 @@ Leader                = ,
 
 MRU                   = , + space
 
-Pep8                  = F5
+Pep8                  = F6
 
 FileManager + Tagbar  = F8
 
