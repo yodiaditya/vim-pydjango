@@ -74,7 +74,7 @@ Pep8                  = F6
 
 FileManager + Tagbar  = F8
 
-FileManager           = , + . 
+FileManager           = , + t 
 
 FuzzFinder Files      = F2 
 

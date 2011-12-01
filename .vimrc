@@ -14,8 +14,8 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'fholgado/minibufexpl.vim'
+Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'vim-scripts/The-NERD-tree'
 Bundle 'sjl/gundo.vim'
 
 " Color scheme
@@ -41,7 +41,7 @@ Bundle "Shougo/neocomplcache"
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'vim-scripts/Pydiction'
-"Bundle "vim-scripts/indentpython.vim"
+Bundle "vim-scripts/indentpython.vim"
 
 " Versioning System
 Bundle 'tpope/vim-fugitive'
@@ -395,7 +395,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pep8 using F5
+" Pep8 using F6
 " You can change with this :
 let g:pep8_map='F6'
 
@@ -468,7 +468,7 @@ endif
 function! ToggleNERDTreeAndTagbar()
     let w:jumpbacktohere = 1
 
-    " Detect which plugins are open
+" Detect which plugins are open
     if exists('t:NERDTreeBufName')
         let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
     else
@@ -476,7 +476,7 @@ function! ToggleNERDTreeAndTagbar()
     endif
     let tagbar_open = bufwinnr('__Tagbar__') != -1
 
-    " Perform the appropriate action
+" Perform the appropriate action
     if nerdtree_open && tagbar_open
         NERDTreeClose
         TagbarClose
@@ -489,7 +489,7 @@ function! ToggleNERDTreeAndTagbar()
         TagbarOpen
     endif
 
-    " Jump back to the original window
+" Jump back to the original window
     for window in range(1, winnr('$'))
         execute window . 'wincmd w'
         if exists('w:jumpbacktohere')
@@ -513,21 +513,21 @@ nnoremap <leader>l :TagbarToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""
 " NERDTree : https://github.com/scrooloose/nerdtree.git
 " MODIFYING NERDTree MY CUSTOM
-" how to using NERDTree : 
+" how to using NERDTree :
 " http://ykyuen.wordpress.com/2011/04/04/nerdtree-the-file-explorer-in-vivim/
 """""""""""""""""""""""""""""""""""""""""""
 
 " Enable this for make NERDTree load every opening files
-" autocmd VimEnter * NERDTree         " Make Always Load NERDTree every opening files
-" autocmd VimEnter * wincmd p         " Automatically go to buffer every time open files
+" autocmd VimEnter * NERDTree " Make Always Load NERDTree every opening files
+" autocmd VimEnter * wincmd p " Automatically go to buffer every time open files
 
-" FIXING NERDTree, automatically close if there no file edited 
+" FIXING NERDTree, automatically close if there no file edited
 "https://github.com/scrooloose/nerdtree/issues/21
 "
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Use leader + . for opening File Explorer
-map <leader>. :NERDTreeTabsToggle<CR>
+map <leader>t :NERDTreeTabsToggle<CR>
 let NERDTreeShowBookmarks=1
 
 " Close all open buffers on entering a window if the only
@@ -542,6 +542,7 @@ function! s:CloseIfOnlyNerdTreeLeft()
   endif
 endfunction
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " VIM DEBUG
 "
@@ -550,5 +551,3 @@ nmap <F2> :Dbg .<CR>
 nmap <F3> :Dbg over<CR>
 nmap <F4> :Dbg break<CR>
 nmap <F5> :Dbg quit<CR>
-
-
