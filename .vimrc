@@ -10,12 +10,14 @@ Bundle 'gmarik/vundle'
 
 " Files manager
 Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/nerdtree'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
-Bundle 'vim-scripts/buftabs'
- 
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'vim-scripts/The-NERD-tree'
+Bundle 'sjl/gundo.vim'
+
 " Color scheme
 Bundle 'cschlueter/vim-mustang'
 Bundle 'godlygeek/csapprox'
@@ -73,7 +75,7 @@ filetype plugin indent on     " required!
 " Pep8                  = F5
 " FileManager + Tagbar  = F8
 " FileManager           = , + t
-" FuzzFinder Files      = F2 
+" FuzzFinder Files      = , + m
 " FuzzFinder Buffer     = , + b
 " File Explorer         = , + t
 " Tagbar                = , + l
@@ -131,6 +133,7 @@ set so=7            " Set 7 lines to the curors - when moving vertical..
 set ruler           "Always show current position
 set hid             "Change buffer - without saving
 set nohidden
+set mouse=a
 
 " Set backspace config
 set backspace=eol,start,indent
@@ -158,7 +161,7 @@ set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 colorscheme mustang
 set nonu
-set gfn=Ubuntu\ Mono\ 11 
+set gfn=Liberation\ Mono\ 10 
 
 set encoding=utf8
 try
@@ -169,7 +172,8 @@ endtry
 if has("gui_running")
   " GUI is running or is about to start.
   " Maximize gvim window.
-  set lines=999 columns=90
+  set lines=43
+  set co=87
 endif
   
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -194,6 +198,10 @@ map j gj
 map k gk
 
 map <silent> <leader><cr> :nohlsearch<cr>
+
+" GRB: clear the search buffer when hitting return
+nnoremap <CR> :nohlsearch<CR>/<BS>
+
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -415,7 +423,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
 map <leader>f :FufFileWithCurrentBufferDir<CR>
-map <F2> :FufFileWithFullCwd<CR>
+map <leader>m :FufFileWithFullCwd<CR>
 map <leader>b :FufBuffer<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -427,7 +435,6 @@ map <leader><space> :MRU<CR>
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure neocomplcache autocomplete 
@@ -476,9 +483,9 @@ function! ToggleNERDTreeAndTagbar()
     elseif nerdtree_open
         TagbarOpen
     elseif tagbar_open
-        NERDTree
+        NERDTreeTabsToggle
     else
-        NERDTree
+        NERDTreeTabsToggle
         TagbarOpen
     endif
 
@@ -519,8 +526,8 @@ nnoremap <leader>l :TagbarToggle<CR>
 "
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
-" Use leader + t for opening File Explorer
-map <leader>t :NERDTreeToggle<CR>
+" Use leader + . for opening File Explorer
+map <leader>. :NERDTreeTabsToggle<CR>
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
@@ -533,4 +540,14 @@ function! s:CloseIfOnlyNerdTreeLeft()
     endif
   endif
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM DEBUG
+"
+"
+nmap <F2> :Dbg .<CR>
+nmap <F3> :Dbg over<CR>
+nmap <F4> :Dbg break<CR>
+nmap <F5> :Dbg quit<CR>
+
 
