@@ -51,6 +51,13 @@ There are several standards used in this VIM
 4. Auto-Commenter
 
 
+# Debugging Python
+
+I use VIM-Debug from http://github.com/jabapyth/vim-debug.
+
+You can see how to installation and screenshots there.
+
+
 # Development Rules
 
 VIM-PyDjango use 80 lines terminals ( Good for development )
