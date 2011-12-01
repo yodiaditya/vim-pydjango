@@ -73,8 +73,6 @@ FuzzFinder Files      = F2
 
 FuzzFinder Buffer     = , + b
 
-File Explorer         = , + t
-
 Tagbar                = , + l
 
 
