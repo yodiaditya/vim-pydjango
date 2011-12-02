@@ -15,7 +15,7 @@ Bundle 'FuzzyFinder'
 Bundle 'vim-scripts/mru.vim'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'sjl/gundo.vim'
 
 " Color scheme
@@ -111,12 +111,12 @@ autocmd! bufwritepost vimrc source ~/.vimrc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-setlocal tabstop=4
-setlocal softtabstop=4
-setlocal shiftwidth=4
-setlocal textwidth=80
-setlocal smarttab
-setlocal expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=80
+set smarttab
+set expandtab
 
 set lbr
 set tw=500
@@ -307,16 +307,16 @@ set completeopt=menuone,longest,preview
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,ctp setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php,ctp setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown,ctp setocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php,ctp set omnifunc=phpcomplete#CompletePHP
 autocmd FileType vim set omnifunc=syntaxcomplete#Complete
 
 " markdown
-au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown setlocal tw=0
+au BufEnter,Bufread *.mkd,*.md,*.mdown,*.markdown set tw=0
 
 " http://www.brankovukelic.com/post/2091037293/turn-vim-into-powerful-javascript-editor"
 
@@ -343,7 +343,7 @@ set viewoptions=folds
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
-autocmd Syntax c,cpp,vim,xml,html,xhtml,js,php,py,python setlocal foldmethod=manual
+autocmd Syntax c,cpp,vim,xml,html,xhtml,js,php,py,python set foldmethod=manual
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
 "remove trailing whitespace
@@ -358,7 +358,7 @@ autocmd BufWritePre *.pl :%s/\s\+$//e
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " tabs, not spaces for php, ctp
-au BufEnter,BufRead *.php,*.ctp setlocal noexpandtab
+au BufEnter,BufRead *.php,*.ctp set noexpandtab
 
 " Autoclose quickfix windows when quit
 " http://stackoverflow.com/questions/7476126/how-to-automatically-close-the-quick-fix-window-when-leaving-a-file
@@ -483,9 +483,9 @@ function! ToggleNERDTreeAndTagbar()
     elseif nerdtree_open
         TagbarOpen
     elseif tagbar_open
-        NERDTreeToggle
+        NERDTreeTabsToggle
     else
-        NERDTreeToggle
+        NERDTreeTabsToggle
         TagbarOpen
     endif
 
@@ -528,7 +528,7 @@ nnoremap <leader>l :TagbarToggle<CR>
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Use leader + . for opening File Explorer
-map <leader>t :NERDTreeToggle<CR>
+map <leader>t :NERDTreeTabsToggle<CR>
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeMouseMode=3
 let g:NERDTreeWinSize=30
@@ -560,7 +560,7 @@ nmap <F5> :Dbg quit<CR>
 " Minibuffer{{{
 """"""""""""""""""""""""""""""
 "Show the miniBufExplorer from the start
-let g:miniBufExplorerMoreThanOne = 0
+" let g:miniBufExplorerMoreThanOne = 0
 
 "Not using because I don't use the vertival window
 "Use a vertical windows
@@ -611,16 +611,16 @@ autocmd BufRead,BufNew :call UMiniBufExplorer
 if has("autocmd")
     au FileType qf
                 \ if &buftype == "quickfix" |
-                \     setlocal statusline=%2*%-3.3n%0* |
-                \     setlocal statusline+=\ \[Compiler\ Messages\] |
-                \     setlocal statusline+=%=%2*\ %<%P |
+                \     set statusline=%2*%-3.3n%0* |
+                \     set statusline+=\ \[Compiler\ Messages\] |
+                \     set statusline+=%=%2*\ %<%P |
                 \ endif
 
     fun! FixMiniBufExplorerTitle()
         if "-MiniBufExplorer-" == bufname("%")
-            setlocal statusline=%2*%-3.3n%0*
-            setlocal statusline+=\[Buffers\]
-            setlocal statusline+=%=%2*\ %<%P
+            set statusline=%2*%-3.3n%0*
+            set statusline+=\[Buffers\]
+            set statusline+=%=%2*\ %<%P
         endif
     endfun
 
@@ -630,3 +630,4 @@ if has("autocmd")
                 \ exec oldwinnr . " wincmd w"
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
+
