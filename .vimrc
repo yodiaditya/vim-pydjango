@@ -23,7 +23,7 @@ Bundle 'cschlueter/vim-mustang'
 Bundle 'godlygeek/csapprox'
 
 " Utilities
-Bundle 'mhz/vim-matchit'
+Bundle 'tsaleh/vim-matchit'
 Bundle 'Raimondi/delimitMate'
 
 " Syntax Commenter
@@ -33,7 +33,6 @@ Bundle 'vim-scripts/tComment'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Universal Syntax Checker + Completion
-Bundle 'UltiSnips'
 Bundle 'scrooloose/syntastic'
 Bundle "Shougo/neocomplcache"
 
@@ -61,8 +60,6 @@ filetype plugin indent on     " required!
 " NerdCommenter : https://github.com/scrooloose/nerdcommenter
 " Tagbar : https://github.com/majutsushi/tagbar
 " Sparkup : http://jetpackweb.com/blog/2010/03/04/write-html-faster-with-sparkup-vim-and-textmate/
-" UltiSnips : http://www.vim.org/scripts/script.php?script_id=2715, 
-"             http://fueledbylemons.com/blog/2011/07/27/why-ultisnips/
 " MRU    : https://github.com/vim-scripts/mru.vim
 " Tagbar : https://github.com/majutsushi/tagbar
 " NeoComplcache : https://github.com/Shougo/neocomplcache
@@ -236,8 +233,8 @@ set cursorline
 set colorcolumn=80 " Mark 80th column with a red line
 
 " Taken From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%81v.\+/
+autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+autocmd FileType python match OverLength /\%81v.\+/
 
 " Paste using ,v in normal mode
 nnoremap <leader>v "+gP
@@ -308,7 +305,7 @@ autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,
 
 " Enable omni completion.
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,ctp setocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown,ctp set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
@@ -397,7 +394,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pep8 using F6
 " You can change with this :
-let g:pep8_map='F6'
+let g:pep8_map='<F6>'
 
 " Pydiction
 let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
@@ -449,10 +446,10 @@ endif
 
 " NeoComplCache
 let g:neocomplcache_enable_at_startup = 1 " Use neocomplcache.
-let g:neocomplcache_enable_smart_case = 1 " Use smartcase.
+let g:neocomplcache_enable_smart_case = 0 " Use smartcase.
 let g:neocomplcache_enable_camel_case_completion = 1 " Use camel case completion.
 let g:neocomplcache_enable_underbar_completion = 1 " Use underbar completion.
-let g:neocomplcache_min_syntax_length = 2 " Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 5 " Set minimum syntax keyword length.
 let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_enable_auto_complete = 1 " Enable automatic popup
@@ -545,16 +542,6 @@ function! s:CloseIfOnlyNerdTreeLeft()
   endif
 endfunction
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM DEBUG
-"
-"
-nmap <F2> :Dbg .<CR>
-nmap <F3> :Dbg over<CR>
-nmap <F4> :Dbg break<CR>
-nmap <F5> :Dbg quit<CR>
-
 " Taken from http://dotfiles.org/~joaoTrindade/.vimrc
 "
 " Minibuffer{{{
@@ -585,7 +572,7 @@ let g:miniBufExplTabWrap = 1
 let g:miniBufExplModSelTarget = 1
 
 " If you would like to single click on tabs rather than double clicking on them to goto the selected buffer.
-let g:miniBufExplUseSingleClick = 1
+"let g:miniBufExplUseSingleClick = 1
 
 "for buffers that have NOT CHANGED and are NOT VISIBLE.
 highlight MBENormal guifg=LightBlue
@@ -602,6 +589,8 @@ highlight MBEVisibleChanged term=bold cterm=bold gui=bold guifg=Green
 let g:bufExplorerSortBy = "name"
 
 autocmd BufRead,BufNew :call UMiniBufExplorer
+
+let b:syntastic_loclist = []
 
 """""""""""""""""""""""""""""""""""
 " Stolen from http://dev.gentoo.org/~bass/configs/vimrc.html
