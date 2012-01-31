@@ -27,13 +27,20 @@ http://www.youtube.com/watch?v=a-KfmxoxdfI
 
 # Installation
 
-It using Vundle for manage all plugin. 
+It using Vundle for manage all plugin. Install Vundle by :
 
-Follow https://github.com/gmarik/vundle for Installation Guide.
+    sudo apt-get install git
+    cd ~/
+    git clone git://github.com/yodiaditya/vim-pydjango.git
+    ln -s ~/vim-server/.vim ~/.vim
+    ln -s ~/vim-server/.vimrc ~/.vimrc
+    git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+Follow https://github.com/gmarik/vundle for more detailed information.
 
 Don't forget to install dependency packages (I'm using Ubuntu 11.10):
 
-    sudo apt-get install python-setuptools python-pip
+    sudo apt-get install python-setuptools python-pip exuberant-ctags
     sudo pip install git+git://github.com/kevinw/pyflakes.git
     sudo pip install pylint
     sudo pip install pep8
@@ -55,16 +62,13 @@ There are several standards used in this VIM
 
 For debugging Django with Development Server, I use ipdb
 
-```
-import ipdb; ipdb.set_trace()
-```
+    import ipdb; ipdb.set_trace()
 
-To install :
+To install ipdb on Ubuntu :
 
-```
-sudo apt-get install ipython
-sudo pip install ipdb
-```
+    sudo apt-get install ipython
+    sudo pip install ipdb
+
 
 # Development Rules
 
