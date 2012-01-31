@@ -53,10 +53,18 @@ There are several standards used in this VIM
 
 # Debugging Python
 
-I use VIM-Debug from http://github.com/jabapyth/vim-debug.
+For debugging Django with Development Server, I use ipdb
 
-You can see how to installation and screenshots there.
+```
+import ipdb; ipdb.set_trace()
+```
 
+To install :
+
+```
+sudo apt-get install ipython
+sudo pip install ipdb
+```
 
 # Development Rules
 
@@ -82,6 +90,8 @@ FuzzFinder Buffer     = , + b
 
 Tagbar                = , + l
 
+Paste                = Ctrl + V
+
 
 # Plugin Installed
 
@@ -105,13 +115,10 @@ Tagbar : https://github.com/majutsushi/tagbar
 
 Sparkup : http://jetpackweb.com/blog/2010/03/04/write-html-faster-with-sparkup-vim-and-textmate/
 
-UltiSnips : http://www.vim.org/scripts/script.php?script_id=2715
-
 MRU    : https://github.com/vim-scripts/mru.vim
 
 Tagbar : https://github.com/majutsushi/tagbar
 
-NeoComplcache : https://github.com/Shougo/neocomplcache
 
 IndentPython : https://github.com/vim-scripts/indentpython.vim
 
@@ -124,3 +131,12 @@ VIM-PyDjango using latest and updated VIM plugins and tools.
 
 Cut a lot time for develop python & django applications after use it!
 
+# Deprecated 
+
+I no longer use VIM-Debug from http://github.com/jabapyth/vim-debug.
+
+You can see how to installation and screenshots there.
+
+UltiSnips : http://www.vim.org/scripts/script.php?script_id=2715
+
+NeoComplcache : https://github.com/Shougo/neocomplcache
