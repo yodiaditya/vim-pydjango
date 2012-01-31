@@ -23,7 +23,7 @@ Bundle 'cschlueter/vim-mustang'
 Bundle 'godlygeek/csapprox'
 
 " Utilities
-Bundle 'tsaleh/vim-matchit'
+Bundle 'mhz/vim-matchit'
 Bundle 'Raimondi/delimitMate'
 
 " Syntax Commenter
@@ -33,8 +33,9 @@ Bundle 'vim-scripts/tComment'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Universal Syntax Checker + Completion
+"Bundle 'UltiSnips'
 Bundle 'scrooloose/syntastic'
-Bundle "Shougo/neocomplcache"
+"Bundle "Shougo/neocomplcache"
 
 " Python Syntax Checker
 Bundle 'kevinw/pyflakes-vim'
@@ -60,6 +61,8 @@ filetype plugin indent on     " required!
 " NerdCommenter : https://github.com/scrooloose/nerdcommenter
 " Tagbar : https://github.com/majutsushi/tagbar
 " Sparkup : http://jetpackweb.com/blog/2010/03/04/write-html-faster-with-sparkup-vim-and-textmate/
+" UltiSnips : http://www.vim.org/scripts/script.php?script_id=2715, 
+"             http://fueledbylemons.com/blog/2011/07/27/why-ultisnips/
 " MRU    : https://github.com/vim-scripts/mru.vim
 " Tagbar : https://github.com/majutsushi/tagbar
 " NeoComplcache : https://github.com/Shougo/neocomplcache
@@ -397,25 +400,12 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let g:pep8_map='<F6>'
 
 " Pydiction
-let g:pydiction_location='~/.vim/bundle/Pydiction/complete-dict'
+let g:pydiction_location='/home/ubuntu/.vim/bundle/Pydiction/complete-dict'
 
 """" PYTHON STYLE """"
 let python_highlight_all=1 " Enable all plugin's highlighting.
 let python_slow_sync=1 " For fast machines.
 let python_print_as_function=1 " Color 'print' function.
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" UltiSnips - ultimate snippets
-"
-set runtimepath+=~/.vim/bundle/UltiSnips
-let g:UltiSnipsSnippetsDir='~/.vim/bundle/UltiSnips/UltiSnips/'
-
-set runtimepath+=~/.vim/ultisnips_rep
-
-" UltiSnips plugin
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FuzzFinder Shorcuts. Using F2 for opening FuzzyFinderTextMate
@@ -438,21 +428,6 @@ endif
 " http://www.vim.org/scripts/script.php?script_id=2620
 
 highlight Pmenu gui=bold
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
-endif
-
-" NeoComplCache
-let g:neocomplcache_enable_at_startup = 1 " Use neocomplcache.
-let g:neocomplcache_enable_smart_case = 1 " Use smartcase.
-let g:neocomplcache_enable_camel_case_completion = 0 " Use camel case completion.
-let g:neocomplcache_enable_underbar_completion = 1 " Use underbar completion.
-let g:neocomplcache_min_syntax_length = 6 " Set minimum syntax keyword length.
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_enable_auto_complete = 1 " Enable automatic popup
 
 if has("gui_running")
     highlight SpellBad term=underline gui=undercurl guisp=Orange
@@ -543,11 +518,13 @@ function! s:CloseIfOnlyNerdTreeLeft()
 endfunction
 
 " Taken from http://dotfiles.org/~joaoTrindade/.vimrc
-"
+" Plugin related {{{1
+"#########################################
+
 " Minibuffer{{{
 """"""""""""""""""""""""""""""
 "Show the miniBufExplorer from the start
-" let g:miniBufExplorerMoreThanOne = 0
+" let g:miniBufExplorerMoreThanOne = 0 
 
 "Not using because I don't use the vertival window
 "Use a vertical windows
@@ -572,7 +549,7 @@ let g:miniBufExplTabWrap = 1
 let g:miniBufExplModSelTarget = 1
 
 " If you would like to single click on tabs rather than double clicking on them to goto the selected buffer.
-"let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplUseSingleClick = 1
 
 "for buffers that have NOT CHANGED and are NOT VISIBLE.
 highlight MBENormal guifg=LightBlue
@@ -590,8 +567,6 @@ let g:bufExplorerSortBy = "name"
 
 autocmd BufRead,BufNew :call UMiniBufExplorer
 
-let b:syntastic_loclist = []
-
 """""""""""""""""""""""""""""""""""
 " Stolen from http://dev.gentoo.org/~bass/configs/vimrc.html
 "
@@ -600,16 +575,16 @@ let b:syntastic_loclist = []
 if has("autocmd")
     au FileType qf
                 \ if &buftype == "quickfix" |
-                \     set statusline=%2*%-3.3n%0* |
-                \     set statusline+=\ \[Compiler\ Messages\] |
-                \     set statusline+=%=%2*\ %<%P |
+                \     setlocal statusline=%2*%-3.3n%0* |
+                \     setlocal statusline+=\ \[Compiler\ Messages\] |
+                \     setlocal statusline+=%=%2*\ %<%P |
                 \ endif
 
     fun! FixMiniBufExplorerTitle()
         if "-MiniBufExplorer-" == bufname("%")
-            set statusline=%2*%-3.3n%0*
-            set statusline+=\[Buffers\]
-            set statusline+=%=%2*\ %<%P
+            setlocal statusline=%2*%-3.3n%0*
+            setlocal statusline+=\[Buffers\]
+            setlocal statusline+=%=%2*\ %<%P
         endif
     endfun
 
