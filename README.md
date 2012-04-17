@@ -36,6 +36,12 @@ It using Vundle for manage all plugin. Install Vundle by :
     ln -s ~/vim-server/.vimrc ~/.vimrc
     git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
+To install. please do :
+
+    vim ~/.vimrc
+    :BundleInstall
+
+
 Follow https://github.com/gmarik/vundle for more detailed information.
 
 Don't forget to install dependency packages (I'm using Ubuntu 11.10):
