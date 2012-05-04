@@ -32,8 +32,8 @@ It using Vundle for manage all plugin. Install Vundle by :
     sudo apt-get install git
     cd ~/
     git clone git://github.com/yodiaditya/vim-pydjango.git
-    ln -s ~/vim-server/.vim ~/.vim
-    ln -s ~/vim-server/.vimrc ~/.vimrc
+    ln -s ~/vim-pydjango/.vim ~/.vim
+    ln -s ~/vim-pydjango/.vimrc ~/.vimrc
     git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 To install. please do :
